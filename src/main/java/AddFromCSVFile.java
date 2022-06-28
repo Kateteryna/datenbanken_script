@@ -128,12 +128,12 @@ public class AddFromCSVFile {
                 String artikelName = artikelInfo[0];
                 String erscheinung = artikelInfo[2];
                 String beschreibung = artikelInfo[3];
-                String kategorie = artikelInfo[5];
-                String hersteller = artikelInfo[6];
+                String kategoriename = artikelInfo[5];
+                String herstellername = artikelInfo[6];
 
                 int artikelKategorieID = 0;
                 for (Map.Entry<Integer, String> m : kategories.entrySet()) {
-                    if (m.getValue().contains(kategorie)) {
+                    if (m.getValue().contains(kategoriename)) {
                         artikelKategorieID = m.getKey();
                         break;
                     }
@@ -141,13 +141,11 @@ public class AddFromCSVFile {
 
                 int artikelHerstellerID = 0;
                 for (Map.Entry<Integer, String> m : herstellers.entrySet()) {
-                    if (m.getValue().contains(hersteller)) {
+                    if (m.getValue().contains(herstellername)) {
                         artikelHerstellerID = m.getKey();
                         break;
                     }
                 }
-
-                //System.out.println(artikelID);
 
                 if(artikelHerstellerID == 0)  {
                     //System.out.println("('" + artikelName + "','" + erscheinung + "'," + "NULL" + "," + artikelKategorieID + ",'" + beschreibung + "'),"+ "\n");
@@ -182,11 +180,12 @@ public class AddFromCSVFile {
         HashMap<Integer, String> kategoriesInfo = bla.kategories;
 
         bla.generateArtikelCode("C:\\Users\\kateryna\\IdeaProjects\\db\\src\\main\\resources\\Museum-Datenbank.artikel.csv", kategoriesInfo, herstellersInfo);
-            int id = 1;
-            for (Map.Entry<Integer, String> m : herstellersInfo.entrySet()) {
-                System.out.println("update Hersteller set hersteller_id = " + id + "\nwhere name = '" + m.getValue() + "';");
-                id++;
-            }
+            //int id = 1;
+            //for (Map.Entry<Integer, String> m : herstellersInfo.entrySet()) {
+            //    System.out.println("update Hersteller set hersteller_id = " + id + "\nwhere name = '" + m.getValue() + "';");
+            //    id++;
+            //}
+            System.out.println("");
             System.out.println(herstellersInfo);
     }
 }
